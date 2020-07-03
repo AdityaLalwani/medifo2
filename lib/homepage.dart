@@ -2,6 +2,7 @@ import 'package:flutter/cupertino.dart';
 import 'package:flutter/material.dart';
 import 'package:flutter_mobile_vision/flutter_mobile_vision.dart';
 import 'package:medifo2/display.dart' as dis;
+import 'package:medifo2/search_screen.dart';
 import 'package:shared_preferences/shared_preferences.dart';
 
 class HomePage1 extends StatefulWidget {
@@ -31,7 +32,12 @@ class _HomePage1State extends State<HomePage1> {
                 color: Colors.white,
               ),
               onPressed: () {
-                Navigator.pushNamed(context, '/search');
+                Navigator.push(
+                  context,
+                  MaterialPageRoute(
+                    builder: (context) => SearchScreen(),
+                  ), //MaterialPageRoute
+                );
               },
             ),
           ],
@@ -57,12 +63,12 @@ class _OCRState extends State<OCR> {
     return score;
   }
 
-  void updateHighScore() {
+  void updateHighScore(String textValue) {
     String sc = sharedPreferences.getString('high_score');
     if (sc == null) {
-      sharedPreferences.setString('high_score', _textValue);
+      sharedPreferences.setString('high_score', textValue);
     } else {
-      sharedPreferences.setString('high_score', _textValue);
+      sharedPreferences.setString('high_score', textValue);
     }
   }
 
@@ -86,9 +92,14 @@ class _OCRState extends State<OCR> {
     setState(() {
       _textValue = (texts[0].value);
       dis.dis(_textValue);
-      updateHighScore();
+      updateHighScore(_textValue);
     });
-    Navigator.pushNamed(context, '/display');
+    Navigator.push(
+      context,
+      MaterialPageRoute(
+        builder: (context) => dis.HomePage(),
+      ), //MaterialPageRoute
+    );
   }
 
   Widget build(BuildContext context) {
@@ -111,7 +122,12 @@ class _OCRState extends State<OCR> {
                   return InkWell(
                     onTap: () async {
                       dis.dis(snapshot.data);
-                      Navigator.pushNamed(context, '/display');
+                      Navigator.push(
+                        context,
+                        MaterialPageRoute(
+                          builder: (context) => dis.HomePage(),
+                        ), //MaterialPageRoute
+                      );
                     },
                     child: Center(
                       child: Text(

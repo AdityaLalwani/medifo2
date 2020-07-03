@@ -1,6 +1,7 @@
 import 'package:flutter/material.dart';
 import 'package:gradient_app_bar/gradient_app_bar.dart';
 import 'package:medifo2/display.dart' as display;
+import 'package:shared_preferences/shared_preferences.dart';
 
 class SearchScreen extends StatefulWidget {
   @override
@@ -10,6 +11,25 @@ class SearchScreen extends StatefulWidget {
 class _SearchScreenState extends State<SearchScreen> {
   String query = "";
   TextEditingController searchController = TextEditingController();
+  SharedPreferences sharedPreferences;
+
+  Future<String> LastScan() async {
+    sharedPreferences = await SharedPreferences.getInstance();
+    String score = sharedPreferences.getString('high_score');
+    if (score == null) {
+      score = 'croc';
+    }
+    return score;
+  }
+
+  void updateHighScore(String textValue) {
+    String sc = sharedPreferences.getString('high_score');
+    if (sc == null) {
+      sharedPreferences.setString('high_score', textValue);
+    } else {
+      sharedPreferences.setString('high_score', textValue);
+    }
+  }
 
   searchAppBar(BuildContext context) {
     return GradientAppBar(
@@ -44,7 +64,12 @@ class _SearchScreenState extends State<SearchScreen> {
                   WidgetsBinding.instance
                       .addPostFrameCallback((_) => searchController.clear());
                   display.dis(query);
-                  Navigator.pushNamed(context, '/display');
+                  Navigator.push(
+                    context,
+                    MaterialPageRoute(
+                      builder: (context) => display.HomePage(),
+                    ), //MaterialPageRoute
+                  );
                 },
               ),
               border: InputBorder.none,

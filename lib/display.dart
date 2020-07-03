@@ -31,7 +31,6 @@ class _HomePageState extends State<HomePage> {
   List<Note1> _notes1 = List<Note1>();
 
   Future<List<Note>> fetchNotes() async {
-    //var url = 'https://raw.githubusercontent.com/boriszv/json/master/random_example.json';
     var response = await hacker_news_scraper.initiate(Client(), s);
     var notes = List<Note>();
     var notesJson = json.decode(response);
@@ -65,15 +64,6 @@ class _HomePageState extends State<HomePage> {
     });
     super.initState();
   }
-/*  List<MaterialColor>_colorItem = [
-    Colors.teal.shade50,
-    Colors.teal.shade100,
-    Colors.teal.shade200,
-    Colors.teal.shade300,
-    Colors.teal.shade400,
-    Colors.teal.shade500,
-  ];
-  MaterialColor color1;*/
 
   @override
   Widget build(BuildContext context) {
@@ -148,10 +138,8 @@ class _HomePageState extends State<HomePage> {
                                                 _notes1[index].title);
                                           });
                                         },
-                                        child: Icon(
-                                          MyFlutterApp.english,
-                                          size: 20.0,
-                                        )),
+                                        child: ImageIcon(
+                                            AssetImage("images/english.png"))),
                                   ),
                                   Container(
                                     margin: EdgeInsets.only(right: 20.0),
@@ -164,10 +152,8 @@ class _HomePageState extends State<HomePage> {
                                                 _notes1[index].title);
                                           });
                                         },
-                                        child: Icon(
-                                          MyFlutterApp.hindi,
-                                          size: 20.0,
-                                        )),
+                                        child: ImageIcon(
+                                            AssetImage("images/hindi.png"))),
                                   ),
                                   Container(
                                     margin: EdgeInsets.only(right: 20.0),
@@ -180,10 +166,8 @@ class _HomePageState extends State<HomePage> {
                                               this._textTranslated3,
                                               this._textTranslated2);
                                         },
-                                        child: Icon(
-                                          MyFlutterApp.gujarati,
-                                          size: 20.0,
-                                        )),
+                                        child: ImageIcon(
+                                            AssetImage("images/gujarati.png"))),
                                   ),
                                 ],
                               ),

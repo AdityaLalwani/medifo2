@@ -1,5 +1,6 @@
 import 'dart:async';
 import 'package:flutter/material.dart';
+import 'package:medifo2/intro.dart';
 import 'package:medifo2/search_screen.dart';
 import 'display.dart';
 import 'homepage.dart';
@@ -12,14 +13,7 @@ Future<Null> main(List<String> arguments) async {
   runApp(
     MaterialApp(
       debugShowCheckedModeBanner: false,
-      title: 'Named Routes Demo',
-      initialRoute: '/',
-      routes: {
-        '/': (context) => StartScreen(),
-        '/display': (context) => HomePage(),
-        '/search': (context) => SearchScreen(),
-        '/home': (context) => HomePage1(),
-      },
+      home: App(),
     ),
   );
   //print(await hacker_news_scraper.initiate(Client(),"wikoryl"));
@@ -50,7 +44,12 @@ class StartScreen extends StatelessWidget {
                   ),
                   onPressed: () {
                     // Navigate to the second screen using a named route
-                    Navigator.pushNamed(context, '/home');
+                    Navigator.push(
+                      context,
+                      MaterialPageRoute(
+                        builder: (context) => App(),
+                      ), //MaterialPageRoute
+                    );
                   },
                 ),
               ),
