@@ -6,7 +6,6 @@ import 'entities/note1.dart';
 import 'json_scraping.dart' as hacker_news_scraper;
 import 'package:flutter/material.dart';
 import 'package:translator/translator.dart';
-import 'my_flutter_app_icons.dart';
 
 class HomePage extends StatefulWidget {
   @override
@@ -20,11 +19,11 @@ Future dis(String ss) {
 
 class _HomePageState extends State<HomePage> {
   // Text translated
-  String _textTranslated = " ";
-  String _textTranslated1 = " ";
-  String _textTranslated2 = " ";
-  String _textTranslated3 = " ";
-  GoogleTranslator _translator = new GoogleTranslator(); // Translator
+//  String _textTranslated = " ";
+//  String _textTranslated1 = " ";
+//  String _textTranslated2 = " ";
+//  String _textTranslated3 = " ";
+//  GoogleTranslator _translator = new GoogleTranslator(); // Translator
 // Translate the text with the codes of the two languages selected
 
   List<Note> _notes = List<Note>();
@@ -141,7 +140,7 @@ class _HomePageState extends State<HomePage> {
                                         child: ImageIcon(
                                             AssetImage("images/english.png"))),
                                   ),
-                                  Container(
+                                  /*Container(
                                     margin: EdgeInsets.only(right: 20.0),
                                     child: InkWell(
                                         onTap: () {
@@ -155,6 +154,7 @@ class _HomePageState extends State<HomePage> {
                                         child: ImageIcon(
                                             AssetImage("images/hindi.png"))),
                                   ),
+
                                   Container(
                                     margin: EdgeInsets.only(right: 20.0),
                                     child: InkWell(
@@ -169,6 +169,7 @@ class _HomePageState extends State<HomePage> {
                                         child: ImageIcon(
                                             AssetImage("images/gujarati.png"))),
                                   ),
+                                  */
                                 ],
                               ),
                             ),
@@ -258,6 +259,7 @@ class _HomePageState extends State<HomePage> {
         });
   }
 
+/*
   _onTextChanged(String text) async {
     _translator.translate(text, from: 'en', to: 'hi').then((translatedText) {
       setState(() {
@@ -292,6 +294,8 @@ class _HomePageState extends State<HomePage> {
         else
           _textTranslated3 = translatedText;
       });
+
+
   customDialog1(BuildContext context, String title, String des) {
     _onTextChanged1(des);
     _onTextChanged(title);
@@ -354,8 +358,8 @@ class _HomePageState extends State<HomePage> {
   }
 
   customAvi2(String title, String des) {
-    _onTextChanged2(des);
-    _onTextChanged3(title);
+//    _onTextChanged2(des);
+//    _onTextChanged3(title);
   }
 
   customDialog2(BuildContext context, String title, String des) {
@@ -416,4 +420,6 @@ class _HomePageState extends State<HomePage> {
           );
         });
   }
+
+ */
 }
